@@ -52,7 +52,7 @@ function SimulatorWidget(node) {
     $node.find('.notesButton').click(ui.showNotes);
     $node.find('.code').keypress(simulator.stop);
     $node.find('.code').keypress(ui.initialize);
-    $(document).keypress(memory.storeKeypress);
+    $(document).keydown(memory.storeKeypress);
   }
 
   function stripText() {
