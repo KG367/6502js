@@ -1827,6 +1827,9 @@ function SimulatorWidget(node) {
       labels.reset();
       defaultCodePC = 0x600;
       $node.find('.messages code').empty();
+      for (var i = defaultCodePc; i < 0x700; i++) { // clear ZP, stack and screen
+        memory.set(i, 0x00);
+      }
 
       var code = $node.find('.code').val();
       code += "\n\n";
