@@ -50,6 +50,7 @@ function SimulatorWidget(node) {
     $node.find('.stepButton').click(simulator.debugExec);
     $node.find('.gotoButton').click(simulator.gotoAddr);
     $node.find('.notesButton').click(ui.showNotes);
+    $node.find('.arrow').click(memory.storeButpress);
     $node.find('.code').keypress(simulator.stop);
     $node.find('.code').keypress(ui.initialize);
     $(document).keydown(memory.storeKeypress);
@@ -239,6 +240,11 @@ function SimulatorWidget(node) {
       memory.storeByte(0xff, value);
     }
 
+    function storeButpress(e) {
+      value = e.currentTarget.defaultValue.charCodeAt(0)
+      memory.storeByte(0xff, value);
+    }
+
     function format(start, length) {
       var html = '';
       var n;
@@ -263,6 +269,7 @@ function SimulatorWidget(node) {
       getWord: getWord,
       storeByte: storeByte,
       storeKeypress: storeKeypress,
+      storeButpress: storeButpress,
       format: format
     };
   }
